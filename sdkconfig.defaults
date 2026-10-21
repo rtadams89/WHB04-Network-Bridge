@@ -1,0 +1,24 @@
+# Target: ESP32-S3 (developed on a Seeed Studio XIAO ESP32-S3, 8 MB flash)
+CONFIG_IDF_TARGET="esp32s3"
+CONFIG_ESPTOOLPY_FLASHSIZE_8MB=y
+CONFIG_ESPTOOLPY_FLASHMODE_DIO=y
+
+# Two OTA slots so the web UI can update the firmware
+CONFIG_PARTITION_TABLE_CUSTOM=y
+CONFIG_PARTITION_TABLE_CUSTOM_FILENAME="partitions.csv"
+CONFIG_BOOTLOADER_APP_ROLLBACK_ENABLE=y
+
+# The single USB port is taken over by USB host (OTG), so the console must
+# live on UART0 (XIAO pins D6 = TX / GPIO43, D7 = RX / GPIO44).
+CONFIG_ESP_CONSOLE_UART_DEFAULT=y
+CONFIG_ESP_CONSOLE_SECONDARY_NONE=y
+
+# Lower latency for jog wheel events
+CONFIG_FREERTOS_HZ=1000
+
+# Web UI
+CONFIG_HTTPD_MAX_REQ_HDR_LEN=1024
+CONFIG_HTTPD_MAX_URI_LEN=512
+
+# Keep the app small enough for 3 MB OTA slots with headroom
+CONFIG_COMPILER_OPTIMIZATION_SIZE=y

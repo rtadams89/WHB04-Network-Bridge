@@ -1,0 +1,73 @@
+menu "WHB04 Network Bridge"
+
+    config BRIDGE_DEFAULT_WIFI_SSID
+        string "Default WiFi SSID"
+        default ""
+        help
+            Optional compile-time WiFi network. Credentials saved through the
+            setup portal take precedence. Leave empty to rely on the portal.
+
+    config BRIDGE_DEFAULT_WIFI_PASSWORD
+        string "Default WiFi password"
+        default ""
+
+    config BRIDGE_DEFAULT_HOSTNAME
+        string "Default hostname"
+        default "whb04-bridge"
+        help
+            DHCP / mDNS hostname. Can be changed in the web UI.
+
+    config BRIDGE_TCP_PORT
+        int "Pendant TCP port"
+        range 1 65535
+        default 5104
+
+    config BRIDGE_SETUP_AP_PASSWORD
+        string "Setup portal WiFi password"
+        default ""
+        help
+            Password for the "WHB04-Bridge-XXXX" setup access point. Empty
+            means an open network (only active while WiFi is not configured or
+            cannot connect). Must be at least 8 characters if set.
+
+    config BRIDGE_PORTAL_FALLBACK_SECONDS
+        int "Start setup portal if WiFi has not connected after (seconds)"
+        default 60
+
+    config BRIDGE_PENDANT_VID
+        hex "Pendant USB vendor ID"
+        default 0x10CE
+
+    config BRIDGE_PENDANT_PID
+        hex "Pendant USB product ID"
+        default 0xEB93
+
+    config BRIDGE_ACCEPT_ANY_HID
+        bool "Accept any HID device (ignore VID/PID)"
+        default n
+        help
+            Forward the first HID interface found regardless of VID/PID.
+            Useful for testing with other pendant variants.
+
+    config BRIDGE_WEB_OTA
+        bool "Allow firmware updates through the web UI"
+        default y
+
+    config BRIDGE_STATUS_LED_GPIO
+        int "Status LED GPIO (-1 to disable)"
+        default 21
+        help
+            GPIO21 is the user LED on the XIAO ESP32-S3.
+
+    config BRIDGE_STATUS_LED_ACTIVE_LOW
+        bool "Status LED is active low"
+        default y
+
+    config BRIDGE_RESET_BUTTON_GPIO
+        int "WiFi reset button GPIO (-1 to disable)"
+        default 0
+        help
+            Holding this button for 5 seconds clears the saved WiFi settings
+            and reboots into the setup portal. GPIO0 is the BOOT button.
+
+endmenu

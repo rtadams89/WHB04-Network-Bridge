@@ -1,0 +1,23 @@
+idf_component_register(
+    SRCS
+        "main.c"
+        "settings.c"
+        "usb_pendant.c"
+        "bridge_server.c"
+        "wifi_manager.c"
+        "captive_dns.c"
+        "web_ui.c"
+        "status_led.c"
+    INCLUDE_DIRS "."
+    PRIV_REQUIRES
+        nvs_flash
+        esp_wifi
+        esp_netif
+        esp_event
+        esp_http_server
+        app_update
+        esp_timer
+        driver
+        esp_driver_gpio
+        lwip
+)
