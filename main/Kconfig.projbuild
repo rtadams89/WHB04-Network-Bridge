@@ -49,6 +49,14 @@ menu "WHB04 Network Bridge"
             Forward the first HID interface found regardless of VID/PID.
             Useful for testing with other pendant variants.
 
+    config BRIDGE_USB_HOST
+        bool "Enable USB host (pendant dongle)"
+        default y
+        help
+            Disable only for diagnostics: with USB host off, the USB-C port
+            stays a USB serial console, so logs can be read without a
+            USB-UART adapter (set the console to USB Serial/JTAG as well).
+
     config BRIDGE_WEB_OTA
         bool "Allow firmware updates through the web UI"
         default y

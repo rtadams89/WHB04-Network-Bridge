@@ -1,6 +1,6 @@
-# Target: ESP32-S3 (developed on a Seeed Studio XIAO ESP32-S3, 8 MB flash)
+# Target: ESP32-S3 with 4 MB or more flash
 CONFIG_IDF_TARGET="esp32s3"
-CONFIG_ESPTOOLPY_FLASHSIZE_8MB=y
+CONFIG_ESPTOOLPY_FLASHSIZE_4MB=y
 CONFIG_ESPTOOLPY_FLASHMODE_DIO=y
 
 # Two OTA slots so the web UI can update the firmware
@@ -20,5 +20,5 @@ CONFIG_FREERTOS_HZ=1000
 CONFIG_HTTPD_MAX_REQ_HDR_LEN=1024
 CONFIG_HTTPD_MAX_URI_LEN=512
 
-# Keep the app small enough for 3 MB OTA slots with headroom
+# Keep the app small enough for the ~1.9 MB OTA slots with headroom
 CONFIG_COMPILER_OPTIMIZATION_SIZE=y

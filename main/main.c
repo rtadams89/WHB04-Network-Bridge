@@ -80,7 +80,12 @@ void app_main(void)
     /* WiFi first: it initialises the network stack the other modules use. */
     ESP_ERROR_CHECK(wifi_manager_start(on_wifi_connected));
     ESP_ERROR_CHECK(bridge_server_start(CONFIG_BRIDGE_TCP_PORT));
+#if CONFIG_BRIDGE_USB_HOST
     ESP_ERROR_CHECK(usb_pendant_start(&callbacks));
+#else
+    (void)callbacks;
+    ESP_LOGW(TAG, "USB host disabled (diagnostic build)");
+#endif
     ESP_ERROR_CHECK(web_ui_start(CONFIG_BRIDGE_TCP_PORT));
     status_led_start();
 

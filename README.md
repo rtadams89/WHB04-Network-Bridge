@@ -39,7 +39,7 @@ the S3 is needed for its USB OTG host support.
 
 | What | Notes |
 |------|-------|
-| ESP32-S3 board | e.g. XIAO ESP32-S3 (8 MB flash) |
+| ESP32-S3 board | 4 MB flash or more, e.g. XIAO ESP32-S3 or a compatible clone |
 | USB-C OTG adapter or cable | Dongle (USB-A) → board (USB-C) |
 | 5 V supply | See **Power** below |
 | *(optional)* 3.3 V USB-UART adapter | For logs: XIAO **D6 = TX** (GPIO43), **D7 = RX** (GPIO44), GND |
